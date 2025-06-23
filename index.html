@@ -27,6 +27,74 @@
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Download Button Styles */
+        .download-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #c0392b, #a93226);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .download-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover .download-icon {
+            transform: translateY(2px);
+        }
+
+        /* Alternative floating download button */
+        .floating-download {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .floating-download:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
         }
         
         .header {
@@ -212,7 +280,12 @@
             font-style: italic;
             margin-bottom: 10px;
         }
-        
+        .project-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
         .tech-stack {
             background: #ecf0f1;
             padding: 8px 15px;
@@ -311,7 +384,6 @@
             }
             
             .contact-info {
-                flex-direction: column;
                 align-items: center;
             }
             
@@ -319,8 +391,21 @@
                 padding: 30px 20px;
             }
             
-            .skills-grid {
-                grid-template-columns: 1fr;
+           
+
+            .download-btn {
+                position: static;
+                margin: 20px auto;
+                display: flex;
+                width: fit-content;
+            }
+
+            .floating-download {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
         
@@ -338,9 +423,32 @@
         .section {
             animation: fadeInUp 0.6s ease-out;
         }
+
+        /* Print styles to hide download button when printing */
+        @media print {
+            .download-btn,
+            .floating-download {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Download Button (choose one of these styles) -->
+    
+    <!-- Option 1: Top-right download button -->
+    <button class="download-btn" onclick="downloadResume()">
+        <span class="download-icon">⬇</span>
+        Download Resume
+    </button>
+
+    <!-- Option 2: Floating download button (uncomment to use instead) -->
+    <!--
+    <a href="#" class="floating-download" onclick="downloadResume(); return false;" title="Download Resume">
+        ⬇
+    </a>
+    -->
+
     <div class="resume-container">
         <div class="header">
             <div class="profile-photo">
@@ -395,7 +503,6 @@
                         <h4>Frontend Technologies</h4>
                         <div class="skill-tags">
                             <span class="skill-tag">React</span>
-                           
                             <span class="skill-tag">Bootstrap</span>
                             <span class="skill-tag">Tailwind CSS</span>
                             <span class="skill-tag">EJS</span>
@@ -430,49 +537,50 @@
                 </div>
             </div>
             
-            <div class="section">
+            <div  class="section ">
                 <h2 class="section-title">PROJECTS</h2>
-                
-                <div class="project">
-                    <h3 class="project-title">Airbnb Clone</h3>
-                    <p class="project-type">Full Stack Web Application</p>
-                    <div class="tech-stack"><strong>Technologies:</strong> Node.js, Express.js, MongoDB, EJS, Bootstrap, Cloudinary, Mapbox, Passport.js</div>
-                    <ul class="project-points">
-                        <li><strong>Developed complete property rental platform</strong> with listing creation, editing, and deletion (CRUD operations)</li>
-                        <li><strong>Implemented secure user authentication</strong> using Passport.js with Google OAuth integration</li>
-                        <li><strong>Built image upload functionality</strong> using Multer and Cloudinary for efficient media storage</li>
-                        <li><strong>Integrated interactive maps</strong> using Mapbox API for property location visualization</li>
-                        <li><strong>Created review and rating system</strong> with authorization middleware to prevent unauthorized actions</li>
-                        <li><strong>Designed responsive UI</strong> with clean EJS layouts and Bootstrap styling</li>
-                    </ul>
+                <div class="project-section">
+
+                    
+                    <div class="project">
+                        <h3 class="project-title">Airbnb Clone</h3>
+                        <p class="project-type">Full Stack Web Application</p>
+                        <div class="tech-stack"><strong>Technologies:</strong> Node.js, Express.js, MongoDB, EJS, Bootstrap, Cloudinary, Mapbox, Passport.js</div>
+                        <ul class="project-points">
+                            <li><strong>Developed complete property rental platform</strong> with listing creation, editing, and deletion (CRUD operations)</li>
+                            <li><strong>Implemented secure user authentication</strong> using Passport.js with Google OAuth integration</li>
+                            <li><strong>Built image upload functionality</strong> using Multer and Cloudinary for efficient media storage</li>
+                            <li><strong>Integrated interactive maps</strong> using Mapbox API for property location visualization</li>
+                            <li><strong>Created review and rating system</strong> with authorization middleware to prevent unauthorized actions</li>
+                            <li><strong>Designed responsive UI</strong> with clean EJS layouts and Bootstrap styling</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project">
+                        <h3 class="project-title">NetMovie (Netflix Clone)</h3>
+                        <p class="project-type">Streaming Platform Clone</p>
+                        <div class="tech-stack"><strong>Technologies:</strong> Node.js, Express.js, MongoDB, EJS, Bootstrap, HTML5 Video</div>
+                        <ul class="project-points">
+                            <li><strong>Built movie streaming platform</strong> with responsive grid layout mimicking Netflix interface</li>
+                            <li><strong>Developed movie detail pages</strong> with embedded HTML5 video player and fallback support</li>
+                            <li><strong>Implemented user profile system</strong> with secure session management using Passport.js</li>
+                            <li><strong>Created responsive design</strong> ensuring smooth functionality across desktop and mobile devices</li>
+                            <li><strong>Integrated search functionality</strong> with dynamic movie filtering and categorization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project">
+                        <h3 class="project-title">Zerodha Dashboard Clone</h3>
+                        <p class="project-type">Trading Dashboard Interface</p>
+                        <div class="tech-stack"><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Tailwind CSS</div>
+                        <ul class="project-points">
+                            <li><strong>Recreated professional trading dashboard</strong> with clean, minimal UI design</li>
+                            <li><strong>Built responsive layout</strong> with sidebar navigation and portfolio summary sections</li>
+                            <li><strong>Implemented modern CSS practices</strong> using Tailwind CSS for rapid development</li>
+                            <li><strong>Designed mobile-first approach</strong> ensuring optimal user experience across all devices</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <div class="project">
-                    <h3 class="project-title">NetMovie (Netflix Clone)</h3>
-                    <p class="project-type">Streaming Platform Clone</p>
-                    <div class="tech-stack"><strong>Technologies:</strong> Node.js, Express.js, MongoDB, EJS, Bootstrap, HTML5 Video</div>
-                    <ul class="project-points">
-                        <li><strong>Built movie streaming platform</strong> with responsive grid layout mimicking Netflix interface</li>
-                        <li><strong>Developed movie detail pages</strong> with embedded HTML5 video player and fallback support</li>
-                        <li><strong>Implemented user profile system</strong> with secure session management using Passport.js</li>
-                        <li><strong>Created responsive design</strong> ensuring smooth functionality across desktop and mobile devices</li>
-                        <li><strong>Integrated search functionality</strong> with dynamic movie filtering and categorization</li>
-                    </ul>
-                </div>
-                
-                <div class="project">
-                    <h3 class="project-title">Zerodha Dashboard Clone</h3>
-                    <p class="project-type">Trading Dashboard Interface</p>
-                    <div class="tech-stack"><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Tailwind CSS</div>
-                    <ul class="project-points">
-                        <li><strong>Recreated professional trading dashboard</strong> with clean, minimal UI design</li>
-                        <li><strong>Built responsive layout</strong> with sidebar navigation and portfolio summary sections</li>
-                        <li><strong>Implemented modern CSS practices</strong> using Tailwind CSS for rapid development</li>
-                        <li><strong>Designed mobile-first approach</strong> ensuring optimal user experience across all devices</li>
-                    </ul>
-                </div>
-                
-             
             </div>
             
             <div class="section">
@@ -506,5 +614,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function downloadResume() {
+            // Method 1: Print to PDF (most common approach)
+            window.print();
+            
+            // Method 2: If you have a PDF file ready, you can use this instead:
+            // const link = document.createElement('a');
+            // link.href = 'path/to/your/resume.pdf'; // Replace with actual PDF path
+            // link.download = 'Venkata_Kalyan_Chittiboina_Resume.pdf';
+            // document.body.appendChild(link);
+            // link.click();
+            // document.body.removeChild(link);
+        }
+
+        // Optional: Add keyboard shortcut for download (Ctrl+D)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                downloadResume();
+            }
+        });
+    </script>
 </body>
 </html>
