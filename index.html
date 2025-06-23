@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venkata Kalyan Chittiboina - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 4px solid white;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .profile-photo img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9em;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+        
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .education-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #9b59b6;
+        }
+        
+        .education-item h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .education-item .institution {
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .project {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .project-title {
+            color: #2c3e50;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .project-type {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .tech-stack {
+            background: #ecf0f1;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .project-points {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .project-points li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+            color: #555;
+        }
+        
+        .project-points li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8em;
+        }
+        
+        .achievements {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .achievements li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .achievements li::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+        }
+        
+        .additional-info {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .additional-info h3 {
+            margin-bottom: 15px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-item strong {
+            color: #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div class="profile-photo">
+                <img src="profilepic.jpg" alt="">
+            </div>
+            <h1 class="name">VENKATA KALYAN CHITTIBOINA</h1>
+            <p class="title">Full Stack Web Developer</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:kalyan021004@gmail.com">kalyan021004@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>8072005600</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <a href="https://www.linkedin.com/in/kalyan021004/" target="_blank">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Andhra Pradesh, India</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                <div class="summary">
+                    Student at IIIT Sri City with strong expertise in Full Stack Web Development. Experienced in building responsive web applications using modern technologies including React, Node.js, and MongoDB. Proven ability to develop complete end-to-end solutions from frontend UI to backend APIs and database integration.
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">TECHNICAL SKILLS</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Kotlin</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frontend Technologies</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                           
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">EJS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend Technologies</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Database & Tools</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">EDUCATION</h2>
+                <div class="education-item">
+                    <h3>Bachelor of Technology in Electronics and Communication Engineering</h3>
+                    <div class="institution">Indian Institute of Information Technology, Sri City | Expected Graduation: 2027</div>
+                    <p><em>Currently in 3rd Year</em></p>
+                    <p><strong>Relevant Coursework:</strong> Data Structures & Algorithms, Computer Networks, Programming Fundamentals</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">PROJECTS</h2>
+                
+                <div class="project">
+                    <h3 class="project-title">Airbnb Clone</h3>
+                    <p class="project-type">Full Stack Web Application</p>
+                    <div class="tech-stack"><strong>Technologies:</strong> Node.js, Express.js, MongoDB, EJS, Bootstrap, Cloudinary, Mapbox, Passport.js</div>
+                    <ul class="project-points">
+                        <li><strong>Developed complete property rental platform</strong> with listing creation, editing, and deletion (CRUD operations)</li>
+                        <li><strong>Implemented secure user authentication</strong> using Passport.js with Google OAuth integration</li>
+                        <li><strong>Built image upload functionality</strong> using Multer and Cloudinary for efficient media storage</li>
+                        <li><strong>Integrated interactive maps</strong> using Mapbox API for property location visualization</li>
+                        <li><strong>Created review and rating system</strong> with authorization middleware to prevent unauthorized actions</li>
+                        <li><strong>Designed responsive UI</strong> with clean EJS layouts and Bootstrap styling</li>
+                    </ul>
+                </div>
+                
+                <div class="project">
+                    <h3 class="project-title">NetMovie (Netflix Clone)</h3>
+                    <p class="project-type">Streaming Platform Clone</p>
+                    <div class="tech-stack"><strong>Technologies:</strong> Node.js, Express.js, MongoDB, EJS, Bootstrap, HTML5 Video</div>
+                    <ul class="project-points">
+                        <li><strong>Built movie streaming platform</strong> with responsive grid layout mimicking Netflix interface</li>
+                        <li><strong>Developed movie detail pages</strong> with embedded HTML5 video player and fallback support</li>
+                        <li><strong>Implemented user profile system</strong> with secure session management using Passport.js</li>
+                        <li><strong>Created responsive design</strong> ensuring smooth functionality across desktop and mobile devices</li>
+                        <li><strong>Integrated search functionality</strong> with dynamic movie filtering and categorization</li>
+                    </ul>
+                </div>
+                
+                <div class="project">
+                    <h3 class="project-title">Zerodha Dashboard Clone</h3>
+                    <p class="project-type">Trading Dashboard Interface</p>
+                    <div class="tech-stack"><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Tailwind CSS</div>
+                    <ul class="project-points">
+                        <li><strong>Recreated professional trading dashboard</strong> with clean, minimal UI design</li>
+                        <li><strong>Built responsive layout</strong> with sidebar navigation and portfolio summary sections</li>
+                        <li><strong>Implemented modern CSS practices</strong> using Tailwind CSS for rapid development</li>
+                        <li><strong>Designed mobile-first approach</strong> ensuring optimal user experience across all devices</li>
+                    </ul>
+                </div>
+                
+             
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">TECHNICAL ACHIEVEMENTS</h2>
+                <div class="achievements">
+                    <ul>
+                        <li><strong>Full Stack Development Expertise</strong> - Built 4+ complete web applications from scratch</li>
+                        <li><strong>RESTful API Development</strong> - Implemented secure and scalable backend architectures</li>
+                        <li><strong>Database Design</strong> - Designed efficient MongoDB schemas for multiple applications</li>
+                        <li><strong>Version Control</strong> - Proficient in Git workflows including branching, merging, and collaboration</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="additional-info">
+                <h3>ADDITIONAL INFORMATION</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>Languages:</strong> English, Hindi, Telugu, Marathi, Tamil (Basic)
+                    </div>
+                    <div class="info-item">
+                        <strong>Core Strengths:</strong> Problem-solving, Full-stack development, Responsive design
+                    </div>
+                    <div class="info-item">
+                        <strong>Interests:</strong> Web development, Mobile app development, IoT projects
+                    </div>
+                    <div class="info-item">
+                        <strong>Specialties:</strong> Database optimization, Modern web frameworks
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
